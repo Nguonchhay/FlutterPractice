@@ -8,23 +8,23 @@ class MyApp extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> {
 
-  var questionIndex = 0;
+  var _questionIndex = 0;
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() {
-      if (questionIndex == 2) {
-        questionIndex = -1;
+      if (_questionIndex == 2) {
+        _questionIndex = -1;
       }
-      questionIndex++;
+      _questionIndex++;
     });
 
-    print('answer a question! at index $questionIndex');
+    print('answer a question! at index $_questionIndex');
   }
   
   @override
@@ -42,17 +42,17 @@ class MyAppState extends State<MyApp> {
           title: const Text('Quiz App'),
         ),
         body: Column(children: [
-          Text(questions.elementAt(questionIndex)),
+          Text(questions.elementAt(_questionIndex)),
           ElevatedButton(
-            onPressed: answerQuestion, 
+            onPressed: _answerQuestion, 
             child: const Text('Answer 1'),
           ),
           ElevatedButton(
-            onPressed: answerQuestion, 
+            onPressed: _answerQuestion, 
             child: const Text('Answer 2'),
           ),
           ElevatedButton(
-            onPressed: answerQuestion, 
+            onPressed: _answerQuestion, 
             child: const Text('Answer 3'),
           ),
         ],),
