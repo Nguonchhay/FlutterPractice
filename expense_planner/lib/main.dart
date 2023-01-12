@@ -6,12 +6,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Expense Planner',
-      home: MyHomeScren()
+      home: MyHomeScreen()
     );
   }
 }
 
-class MyHomeScren extends StatelessWidget {
+class MyHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +19,19 @@ class MyHomeScren extends StatelessWidget {
       appBar: AppBar(
         title: Text('Expense Planner')
       ),
-      body: Center(
-        child: Text('Content'),
+      body: Column(
+        children: <Widget>[
+          Card(
+            child: Container (
+              width: double.infinity,
+              child: Text('CHART!'),
+            ),
+            elevation: 5,
+          ),
+          Card(
+            child: Text('LIST OF TX')
+          ),
+        ],
       ),
     );
   }
