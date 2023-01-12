@@ -21,19 +21,35 @@ class _MyAppState extends State<MyApp> {
   final _questions = [
     {
       'questionText': 'What\'s your favorite color?',
-      'answers': ['Blue', 'Green', 'Red']
+      'answers': [
+        { 'text': 'Blue', 'score': 7 }, 
+        { 'text': 'Green', 'score': 5 }, 
+        { 'text': 'Red', 'score': 10 }
+      ]
     },
     {
       'questionText': 'What\'s your favorite animal?',
-      'answers': ['Dog', 'Cat', 'Pig']
+      'answers': [
+        { 'text': 'Dog', 'score': 7 }, 
+        { 'text': 'Cat', 'score': 5 }, 
+        { 'text': 'Pig', 'score': 10 }
+      ]
     },
     {
       'questionText': 'What\'s your favorite fruit?',
-      'answers': ['Banana', 'Mango', 'Lychee', 'Orange']
+      'answers': [
+        { 'text': 'Mango', 'score': 7 }, 
+        { 'text': 'Lychee', 'score': 5 }, 
+        { 'text': 'Banana', 'score': 10 },
+        { 'text': 'Orange', 'score': 8 }
+      ]
     }
   ];
+  int _totalScore = 0;
 
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
+    _totalScore += score;
+
     setState(() {  
       _questionIndex++;
     });
@@ -47,13 +63,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Quiz App'),
+          title: Text('Quiz App'),
         ),
         body: _questionIndex < _questions.length ? Quiz(
           questions: _questions, 
           selectedIndex:_questionIndex, 
           answerHandler: _answerQuestion
-          ) : const Result(), 
+          ) : Result(_totalScore), 
       ),
     );
   }
