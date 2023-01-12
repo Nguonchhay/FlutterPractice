@@ -56,6 +56,13 @@ class _MyAppState extends State<MyApp> {
 
     print('answer a question! at index $_questionIndex');
   }
+
+  void _restartQuiz() {
+    setState(() {
+      _totalScore = 0;
+    _questionIndex = 0;
+    });
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -69,7 +76,7 @@ class _MyAppState extends State<MyApp> {
           questions: _questions, 
           selectedIndex:_questionIndex, 
           answerHandler: _answerQuestion
-          ) : Result(_totalScore), 
+          ) : Result(_totalScore, _restartQuiz), 
       ),
     );
   }
