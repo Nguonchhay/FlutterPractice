@@ -14,14 +14,39 @@ class TransactionItem extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Container(
+            margin: const EdgeInsets.symmetric(
+              vertical: 10.0,
+              horizontal: 10.0
+            ),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.purple, width: 2),
+            ),
+            padding: const EdgeInsets.all(10),
             child: Text(
-              transaction.amount.toString()
+              transaction.amount.toString(),
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.purple,
+              ),
             ),
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(transaction.title),
-              Text(transaction.date.toIso8601String())
+              Text(
+                transaction.title,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                )
+              ),
+              Text(
+                transaction.date.toIso8601String(),
+                style: const TextStyle(
+                  color: Colors.grey,
+                )
+              )
             ],
           )
         ],
