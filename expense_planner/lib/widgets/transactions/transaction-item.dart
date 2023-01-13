@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../models/transaction.dart';
 
@@ -23,7 +24,7 @@ class TransactionItem extends StatelessWidget {
             ),
             padding: const EdgeInsets.all(10),
             child: Text(
-              transaction.amount.toString(),
+              '\$ ${transaction.amount.toString()}',
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
@@ -42,7 +43,7 @@ class TransactionItem extends StatelessWidget {
                 )
               ),
               Text(
-                transaction.date.toIso8601String(),
+                DateFormat('dd-MMM-yyyy').format(transaction.date),
                 style: const TextStyle(
                   color: Colors.grey,
                 )
