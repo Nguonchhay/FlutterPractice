@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
 
+import 'package:expense_planner/models/transaction.dart';
 
-class CreateTransaction extends StatefulWidget {
-  const CreateTransaction({super.key});
 
-  @override
-  State<CreateTransaction> createState() => _CreateTransactionState();
-}
-
-class _CreateTransactionState extends State<CreateTransaction> {
-  String _inputTitle = '';
+class CreateTransaction extends StatelessWidget {
+  
+  String inputTitle = '';
   final amountController = TextEditingController();
+  Function addTransactionHandler;
 
+  CreateTransaction(this.addTransactionHandler, {super.key});
+
+  Transaction getTransaction() {
+    double inputAmount = double.parse(amountController.text.toString());
+
+    return Transaction(
+      id: DateTime.now().toIso8601String(), 
+      title: inputTitle, 
+      amount: inputAmount, 
+      date: DateTime.now()
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,25 +28,24 @@ class _CreateTransactionState extends State<CreateTransaction> {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
         TextField(
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: 'Title'
           ),
           onChanged: (value) {
-            _inputTitle = value;
+            inputTitle = value;
           },
         ),
         TextField(
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: 'Amount',
           ),
           controller: amountController,
         ),
         Container(
-          padding: EdgeInsets.only(top: 10),
+          padding: const EdgeInsets.only(top: 10),
           child: FloatingActionButton(
             onPressed: () {
-              print(_inputTitle);
-              print(amountController.text);
+              addTransactionHandler(getTransaction());
             },
             child: Text('+'),
           ),
