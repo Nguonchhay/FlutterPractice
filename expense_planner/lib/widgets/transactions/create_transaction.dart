@@ -40,6 +40,7 @@ class CreateTransaction extends StatelessWidget {
             labelText: 'Amount',
           ),
           controller: amountController,
+          keyboardType: TextInputType.number,
         ),
         Container(
           padding: const EdgeInsets.only(top: 10),
