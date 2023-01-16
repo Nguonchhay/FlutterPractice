@@ -7,7 +7,6 @@ import '../../models/transaction.dart';
 class UserTransaction extends StatelessWidget {
 
   final List<Transaction> transactions;
-  final Function addTransactionHandler;
 
   UserTransaction(this.transactions, {super.key});
 
