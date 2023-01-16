@@ -6,7 +6,7 @@ import 'create_transaction.dart';
 
 
 class UserTransaction extends StatefulWidget {
-  const UserTransaction({super.key});
+  UserTransaction({super.key});
 
   @override
   State<UserTransaction> createState() => _UserTransactionState();

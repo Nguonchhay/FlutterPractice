@@ -7,7 +7,7 @@ class TransactionItem extends StatelessWidget {
 
   final Transaction transaction;
 
-  const TransactionItem({ required this.transaction, super.key});
+  TransactionItem({ required this.transaction, super.key});
 
   @override
   Widget build(BuildContext context) {
