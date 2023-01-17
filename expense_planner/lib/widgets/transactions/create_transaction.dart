@@ -56,6 +56,7 @@ class _CreateTransactionState extends State<CreateTransaction> {
             child: FloatingActionButton(
               onPressed: () {
                 widget.addTransactionHandler(getTransaction());
+                Navigator.of(context).pop();
               },
               child: Text('+'),
             ),
