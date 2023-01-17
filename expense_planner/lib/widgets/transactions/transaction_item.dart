@@ -15,20 +15,23 @@ class TransactionItem extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Container(
-            margin: const EdgeInsets.symmetric(
+            margin: EdgeInsets.symmetric(
               vertical: 10.0,
               horizontal: 10.0
             ),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.purple, width: 2),
+              border: Border.all(
+                color: Theme.of(context).primaryColor, 
+                width: 2
+              ),
             ),
-            padding: const EdgeInsets.all(10),
+            padding: EdgeInsets.all(10),
             child: Text(
               '\$ ${transaction.amount.toString()}',
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
-                color: Colors.purple,
+                color: Theme.of(context).primaryColor,
               ),
             ),
           ),
@@ -37,15 +40,15 @@ class TransactionItem extends StatelessWidget {
             children: <Widget>[
               Text(
                 transaction.title,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 )
               ),
               Text(
                 DateFormat('dd-MMM-yyyy').format(transaction.date),
-                style: const TextStyle(
-                  color: Colors.grey,
+                style: TextStyle(
+                  color: Theme.of(context).primaryColorLight,
                 )
               )
             ],

@@ -11,6 +11,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Expense Planner',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        colorScheme: ThemeData().colorScheme.copyWith(secondary: Colors.amber),
+      ),
       home: MyHomeScreen()
     );
   }
