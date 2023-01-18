@@ -14,6 +14,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
         colorScheme: ThemeData().colorScheme.copyWith(secondary: Colors.amber),
+        fontFamily: 'Quicksand',
+        // appBarTheme: AppBarTheme(
+        //   textTheme: ThemeData.light().textTheme.copyWith(
+        //     titleMedium: TextStyle(
+        //       fontFamily: 'OpenSans',
+        //       fontSize: 20,
+        //     )
+        //   ),
+        // ),
       ),
       home: MyHomeScreen()
     );
