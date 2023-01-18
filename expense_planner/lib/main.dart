@@ -15,14 +15,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         colorScheme: ThemeData().colorScheme.copyWith(secondary: Colors.amber),
         fontFamily: 'Quicksand',
-        // appBarTheme: AppBarTheme(
-        //   textTheme: ThemeData.light().textTheme.copyWith(
-        //     titleMedium: TextStyle(
-        //       fontFamily: 'OpenSans',
-        //       fontSize: 20,
-        //     )
-        //   ),
-        // ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+            titleMedium: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 20,
+            )
+          ),
+        ),
       ),
       home: MyHomeScreen()
     );
@@ -38,11 +38,11 @@ class MyHomeScreen extends StatefulWidget {
 class _MyHomeScreenState extends State<MyHomeScreen> {
 
   final List<Transaction> _transactions = [
-    Transaction(id: 'tx001', title: 'Buy coffee', amount: 2.0, date: DateTime(2023,1,1)),
-    Transaction(id: 'tx001', title: 'Buy snack', amount: 2.5, date: DateTime(2023,1,5)),
-    Transaction(id: 'tx001', title: 'Buy bread', amount: 12.0, date: DateTime(2023,1,11)),
-    Transaction(id: 'tx001', title: 'Buy tea', amount: 7.0, date: DateTime(2023,1,12)),
-    Transaction(id: 'tx001', title: 'Buy rice', amount: 8.0, date: DateTime(2023,1,13))
+    // Transaction(id: 'tx001', title: 'Buy coffee', amount: 2.0, date: DateTime(2023,1,1)),
+    // Transaction(id: 'tx001', title: 'Buy snack', amount: 2.5, date: DateTime(2023,1,5)),
+    // Transaction(id: 'tx001', title: 'Buy bread', amount: 12.0, date: DateTime(2023,1,11)),
+    // Transaction(id: 'tx001', title: 'Buy tea', amount: 7.0, date: DateTime(2023,1,12)),
+    // Transaction(id: 'tx001', title: 'Buy rice', amount: 8.0, date: DateTime(2023,1,13))
   ];
 
   void _addTransaction(Transaction transaction) {
