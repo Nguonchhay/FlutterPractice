@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'models/transaction.dart';
 import 'widgets/chart.dart';
-import 'widgets/transactions/user_transaction.dart';
+import 'widgets/transactions/transaction_list.dart';
 import 'widgets/transactions/create_transaction.dart';
 
 
@@ -39,6 +39,11 @@ class MyHomeScreen extends StatefulWidget {
 class _MyHomeScreenState extends State<MyHomeScreen> {
 
   List<Transaction> _transactions = [
+    // Transaction(id: 'tx001', title: 'Buy coffee', amount: 2.0, date: DateTime(2023,1,1)),
+    // Transaction(id: 'tx001', title: 'Buy snack', amount: 2.5, date: DateTime(2023,1,5)),
+    // Transaction(id: 'tx001', title: 'Buy bread', amount: 12.0, date: DateTime(2023,1,11)),
+    // Transaction(id: 'tx001', title: 'Buy tea', amount: 7.0, date: DateTime(2023,1,12)),
+    // Transaction(id: 'tx001', title: 'Buy rice', amount: 8.0, date: DateTime(2023,1,13)),
     // Transaction(id: 'tx001', title: 'Buy coffee', amount: 2.0, date: DateTime(2023,1,1)),
     // Transaction(id: 'tx001', title: 'Buy snack', amount: 2.5, date: DateTime(2023,1,5)),
     // Transaction(id: 'tx001', title: 'Buy bread', amount: 12.0, date: DateTime(2023,1,11)),
@@ -80,18 +85,22 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Expense Planner'),
-        actions: <Widget>[
-          IconButton(
-            onPressed: () => _showCreateTransactionForm(context), 
-            icon: Icon(
-              Icons.add
-            ),
+    final appBar = AppBar(
+      title: Text('Expense Planner'),
+      actions: <Widget>[
+        IconButton(
+          onPressed: () => _showCreateTransactionForm(context), 
+          icon: Icon(
+            Icons.add
           ),
-        ],
-      ),
+        ),
+      ],
+    );
+
+    final calRemainingHeight = MediaQuery.of(context).size.height  - appBar.preferredSize.height - MediaQuery.of(context).padding.top;
+
+    return Scaffold(
+      appBar: appBar,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showCreateTransactionForm(context),
@@ -102,10 +111,14 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
+            height: calRemainingHeight * 0.3,
             width: double.infinity,
             child: Chart(_recentTransactions),
           ),
-          UserTransaction(_transactions, _deleteTransaction),
+          Container(
+            height: calRemainingHeight * 0.7,
+            child: TransactionList(transactions: _transactions, deleteTransactionHandler: _deleteTransaction)
+          ),
         ],
       ),
     );

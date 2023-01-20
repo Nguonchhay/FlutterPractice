@@ -17,6 +17,7 @@ class TransactionList extends StatefulWidget {
 }
 
 class _TransactionListState extends State<TransactionList> {
+  
   void deleteTransaction(String id) {
     showDialog(
       context: context, 
@@ -46,9 +47,7 @@ class _TransactionListState extends State<TransactionList> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 500,
-      child: widget.transactions.isEmpty ? Column(
+    return widget.transactions.isEmpty ? Column(
         children: <Widget>[
           const Text('No transactions'),
           const SizedBox(
@@ -100,7 +99,6 @@ class _TransactionListState extends State<TransactionList> {
           ); 
         },
         itemCount: widget.transactions.length,
-      ),
-    );
+      );
   }
 }
