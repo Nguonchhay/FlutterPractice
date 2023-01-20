@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:expense_planner/models/transaction.dart';
+import 'package:intl/intl.dart';
 
 
 class CreateTransaction extends StatefulWidget {
@@ -15,18 +16,33 @@ class CreateTransaction extends StatefulWidget {
 
 class _CreateTransactionState extends State<CreateTransaction> {
   String inputTitle = '';
-
   final amountController = TextEditingController();
+  DateTime? _selectedDate;
 
-  Transaction getTransaction() {
+  Transaction _getTransaction() {
     double inputAmount = double.parse(amountController.text.toString());
 
     return Transaction(
       id: DateTime.now().toIso8601String(), 
       title: inputTitle, 
       amount: inputAmount, 
-      date: DateTime.now()
+      date: _selectedDate == null ? DateTime.now() : _selectedDate!
     );
+  }
+
+  void _displayDatePicker() {
+    showDatePicker(
+      context: context, 
+      initialDate: DateTime.now(), 
+      firstDate: DateTime(2020), 
+      lastDate: DateTime.now(),
+    ).then((pickedDate) => {
+      if (pickedDate != null) {
+        setState(() {
+          _selectedDate = pickedDate;
+        })
+      }
+    });
   }
 
   @override
@@ -52,13 +68,30 @@ class _CreateTransactionState extends State<CreateTransaction> {
             keyboardType: TextInputType.number,
           ),
           Container(
+            height: 70,
+            child: Row(
+              children: <Widget>[
+                Text(
+                  _selectedDate == null ? 'No date selected' : DateFormat.yMMMd().format(_selectedDate!)
+                ),
+                TextButton(
+                  child: Text('Choose Date'),
+                  style: TextButton.styleFrom(
+                    textStyle: TextStyle(color: Theme.of(context).primaryColor),
+                  ),
+                  onPressed: _displayDatePicker,
+                ),
+              ],
+            ),
+          ),
+          Container(
             padding: const EdgeInsets.only(top: 10),
-            child: FloatingActionButton(
+            child: ElevatedButton(
               onPressed: () {
-                widget.addTransactionHandler(getTransaction());
+                widget.addTransactionHandler(_getTransaction());
                 Navigator.of(context).pop();
               },
-              child: Text('+'),
+              child: Text('Add Transaction'),
             ),
           ),
         ],

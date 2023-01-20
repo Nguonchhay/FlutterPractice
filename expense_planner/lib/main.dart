@@ -38,7 +38,7 @@ class MyHomeScreen extends StatefulWidget {
 
 class _MyHomeScreenState extends State<MyHomeScreen> {
 
-  final List<Transaction> _transactions = [
+  List<Transaction> _transactions = [
     // Transaction(id: 'tx001', title: 'Buy coffee', amount: 2.0, date: DateTime(2023,1,1)),
     // Transaction(id: 'tx001', title: 'Buy snack', amount: 2.5, date: DateTime(2023,1,5)),
     // Transaction(id: 'tx001', title: 'Buy bread', amount: 12.0, date: DateTime(2023,1,11)),
@@ -49,6 +49,12 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
   void _addTransaction(Transaction transaction) {
     setState(() {
       _transactions.add(transaction);
+    });
+  }
+
+  void _deleteTransaction(String transactionId) {
+    setState(() {
+      _transactions.removeWhere((tran) => tran.id == transactionId);
     });
   }
   
@@ -99,7 +105,7 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
             width: double.infinity,
             child: Chart(_recentTransactions),
           ),
-          UserTransaction(_transactions),
+          UserTransaction(_transactions, _deleteTransaction),
         ],
       ),
     );
