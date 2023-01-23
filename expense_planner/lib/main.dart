@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'models/transaction.dart';
 import 'widgets/chart.dart';
@@ -6,7 +7,17 @@ import 'widgets/transactions/transaction_list.dart';
 import 'widgets/transactions/create_transaction.dart';
 
 
-void main() => runApp(MyApp());
+void main() {
+
+  // // Define rendering behavior
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  //   DeviceOrientation.portraitDown
+  // ]);
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
