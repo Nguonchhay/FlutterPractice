@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:meal_app/screens/meals_screen.dart';
 
+import 'package:meal_app/screens/meals_screen.dart';
 import './../../models/category.dart';
+import './../../configs/constants.dart';
+
 
 class CategoryItem extends StatelessWidget {
 
@@ -10,10 +12,14 @@ class CategoryItem extends StatelessWidget {
   const CategoryItem(this.category, {super.key});
 
   void goToMealScreen(BuildContext ctx) {
-    Navigator.of(ctx).push(
-      MaterialPageRoute(builder: (_) {
-        return MealsScreen();
-      },)
+    // Navigator.of(ctx).push(
+    //   MaterialPageRoute(builder: (_) {
+    //     return MealsScreen(category);
+    //   },)
+    // );
+    Navigator.of(ctx).pushNamed(
+      ROUTER_NAMES['MEALS_SCREEN'].toString(),
+      arguments: category
     );
   }
 
