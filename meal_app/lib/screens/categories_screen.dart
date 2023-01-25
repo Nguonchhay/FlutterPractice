@@ -5,6 +5,9 @@ import '../widgets/categories/CategoryItem.dart';
 import './../mock-data/dummy_data.dart';
 
 class CategoriesScreen extends StatelessWidget {
+
+  static String routeName = '/categories';
+
   CategoriesScreen({super.key});
 
   @override

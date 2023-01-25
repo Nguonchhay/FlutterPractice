@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:meal_app/screens/meals_screen.dart';
 import './../../models/category.dart';
-import './../../configs/constants.dart';
 
 
 class CategoryItem extends StatelessWidget {
@@ -18,7 +17,7 @@ class CategoryItem extends StatelessWidget {
     //   },)
     // );
     Navigator.of(ctx).pushNamed(
-      ROUTER_NAMES['MEALS_SCREEN'].toString(),
+      MealsScreen.routeName,
       arguments: category
     );
   }

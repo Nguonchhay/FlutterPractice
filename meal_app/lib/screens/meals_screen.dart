@@ -5,6 +5,8 @@ import '../models/category.dart';
 
 class MealsScreen extends StatefulWidget {
 
+  static String routeName = '/meals';
+
   // final Category category;
 
   // MealsScreen(this.category, {super.key});
