@@ -7,7 +7,7 @@ class MealDetialScreen extends StatelessWidget {
 
   static const routeName = '/meals/detail';
 
-  const MealDetialScreen({super.key});
+  MealDetialScreen({super.key});
 
   Widget buildSectionTitle(BuildContext context, String title) {
     return Container(
