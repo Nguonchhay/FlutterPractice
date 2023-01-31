@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:meal_app/screens/search_screen.dart';
 
 
 class MainDrawer extends StatelessWidget {
   MainDrawer({super.key});
 
 
-  Widget buildListTile(String title, IconData icon) {
+  Widget buildListTile(String title, IconData icon, VoidCallback onTabHandler) {
     return ListTile(
         leading: Icon(
           icon, 
@@ -18,9 +19,7 @@ class MainDrawer extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        onTap: () {
-          
-        },
+        onTap: onTabHandler,
       );
   }
 
@@ -48,8 +47,20 @@ class MainDrawer extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20,),
-          buildListTile('Meals', Icons.restaurant),
-          buildListTile('Filters', Icons.settings),
+          buildListTile(
+            'Meals', 
+            Icons.restaurant,
+            () {
+              Navigator.of(context).pushReplacementNamed('/');
+            }
+          ),
+          buildListTile(
+            'Filters', 
+            Icons.settings,
+            () {
+              Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
+            }
+          ),
         ],
       ),
     );
