@@ -1,3 +1,4 @@
+import 'package:banana_shop/screens/products_overview_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,30 +11,33 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Banana Shop',
-      home: MyHomePage(),
+      routes: {
+        '/': (ctx) => ProductsOverViewScreen(),
+        ProductsOverViewScreen.routeName: (ctx) => ProductsOverViewScreen()
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({super.key});
+// class MyHomePage extends StatefulWidget {
+//   MyHomePage({super.key});
 
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
 
-class _MyHomePageState extends State<MyHomePage> {
+// class _MyHomePageState extends State<MyHomePage> {
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Banana Shop'),
-      ),
-      body: Center(
-        child: const Text('Shop Data')
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Banana Shop'),
+//       ),
+//       body: Center(
+//         child: const Text('Shop Data')
+//       ),
+//     );
+//   }
+// }
