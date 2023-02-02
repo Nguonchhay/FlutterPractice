@@ -11,6 +11,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Banana Shop',
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+          secondary: Colors.amberAccent
+        ), 
+      ),
       routes: {
         '/': (ctx) => ProductsOverViewScreen(),
         ProductsOverViewScreen.routeName: (ctx) => ProductsOverViewScreen()
