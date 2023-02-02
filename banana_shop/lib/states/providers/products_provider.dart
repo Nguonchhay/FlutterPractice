@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 
-import 'package:banana_shop/models/product.dart';
+import 'package:banana_shop/states/models/product.dart';
 
 
 class ProductsProvider with ChangeNotifier {

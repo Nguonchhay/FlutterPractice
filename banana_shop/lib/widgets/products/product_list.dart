@@ -1,7 +1,7 @@
-import 'package:banana_shop/states/providers/products_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:banana_shop/states/providers/products_provider.dart';
 import 'package:banana_shop/widgets/products/product_item.dart';
 
 
@@ -18,7 +18,10 @@ class ProductList extends StatelessWidget {
     return GridView.builder(
       padding: const EdgeInsets.all(10),
       itemCount: products.length,
-      itemBuilder: (ctx, ind) => ProductItem(products[ind]),
+      itemBuilder: (ctx, ind) => ChangeNotifierProvider(
+        create: (c) => products[ind],
+        child: ProductItem(),
+      ),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 10,
