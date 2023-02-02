@@ -1,9 +1,18 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:banana_shop/states/providers/products_provider.dart';
 import 'package:banana_shop/screens/product_detail_screen.dart';
 import 'package:banana_shop/screens/products_overview_screen.dart';
-import 'package:flutter/material.dart';
+
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (ctx) => ProductsProvider(),
+      child: MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -26,26 +35,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// class MyHomePage extends StatefulWidget {
-//   MyHomePage({super.key});
-
-
-//   @override
-//   State<MyHomePage> createState() => _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Banana Shop'),
-//       ),
-//       body: Center(
-//         child: const Text('Shop Data')
-//       ),
-//     );
-//   }
-// }

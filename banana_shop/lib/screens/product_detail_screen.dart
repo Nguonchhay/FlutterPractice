@@ -1,6 +1,9 @@
+import 'package:banana_shop/states/providers/products_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:banana_shop/models/product.dart';
+
 
 
 class ProductDetailScreen extends StatelessWidget {
@@ -11,14 +14,15 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final routeProduct = ModalRoute.of(context)!.settings.arguments as Product;
+    final selectedProductId = ModalRoute.of(context)!.settings.arguments as String;
+    final product = Provider.of<ProductsProvider>(context, listen: false).findById(selectedProductId);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(routeProduct.title),
+        title: Text(product.title),
       ),
-      body: Center(
-        child: const Text('Shop Data')
+      body: const Center(
+        child: Text('Shop Data')
       ),
     );
   }
