@@ -9,29 +9,39 @@ enum FilterOptions {
   Favorites
 }
 
-class ProductsOverViewScreen extends StatelessWidget {
+class ProductsOverViewScreen extends StatefulWidget {
   static const routeName = '/products';
 
   const ProductsOverViewScreen({super.key});
-  
+
+  @override
+  State<ProductsOverViewScreen> createState() => _ProductsOverViewScreenState();
+}
+
+class _ProductsOverViewScreenState extends State<ProductsOverViewScreen> {
+
+  bool _isShowAll = true;
+
+  void updateFilterOption(FilterOptions value) {
+    setState(() {
+      if (value == FilterOptions.All) {
+        _isShowAll = true;
+      } else {
+        _isShowAll = false;
+      }
+      
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    
-    final productsProvider = Provider.of<ProductsProvider>(context);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Products'),
         actions: <Widget>[
           PopupMenuButton(
             icon: const Icon(Icons.more_vert),
-            onSelected: (FilterOptions selectedOption) {
-              if (selectedOption == FilterOptions.All) {
-                productsProvider.showAll();
-              } else {
-                productsProvider.showOnlyFavorites();
-              }
-            },
+            onSelected: (FilterOptions selectedOption) => updateFilterOption(selectedOption),
             itemBuilder: (_) => [
               const PopupMenuItem(
                 value: FilterOptions.All,
@@ -45,7 +55,7 @@ class ProductsOverViewScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: ProductList(),
+      body: ProductList(_isShowAll),
     );
   }
 }

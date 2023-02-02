@@ -6,14 +6,15 @@ import 'package:banana_shop/widgets/products/product_item.dart';
 
 
 class ProductList extends StatelessWidget {
-  
-  const ProductList({super.key});
+  final bool isShowAll;
+
+  const ProductList(this.isShowAll, {super.key});
 
   @override
   Widget build(BuildContext context) {
 
     final productsProvider = Provider.of<ProductsProvider>(context);
-    final products = productsProvider.products;
+    final products = isShowAll ? productsProvider.products : productsProvider.favoriteProducts;
 
     return GridView.builder(
       padding: const EdgeInsets.all(10),
