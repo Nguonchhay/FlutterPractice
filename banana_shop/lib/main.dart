@@ -1,3 +1,4 @@
+import 'package:banana_shop/screens/product_detail_screen.dart';
 import 'package:banana_shop/screens/products_overview_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/': (ctx) => ProductsOverViewScreen(),
-        ProductsOverViewScreen.routeName: (ctx) => ProductsOverViewScreen()
+        ProductsOverViewScreen.routeName: (ctx) => ProductsOverViewScreen(),
+        ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
       },
     );
   }

@@ -1,3 +1,4 @@
+import 'package:banana_shop/screens/product_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:banana_shop/models/product.dart';
@@ -30,9 +31,17 @@ class ProductItem extends StatelessWidget {
             onPressed: () {},
           ),
         ),
-        child: Image.network(
-          product.imageUrl,
-          fit: BoxFit.cover,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              ProductDetailScreen.routeName,
+              arguments: product
+            );
+          },
+          child: Image.network(
+            product.imageUrl,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );
