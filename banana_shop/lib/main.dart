@@ -1,3 +1,4 @@
+import 'package:banana_shop/screens/carts_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         '/': (ctx) => ProductsOverViewScreen(),
         ProductsOverViewScreen.routeName: (ctx) => ProductsOverViewScreen(),
         ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+        CartsScreen.routeName: (ctx) => CartsScreen(),
       },
     );
   }

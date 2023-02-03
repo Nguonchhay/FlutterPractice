@@ -1,3 +1,4 @@
+import 'package:banana_shop/screens/carts_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 
@@ -51,7 +52,7 @@ class _ProductsOverViewScreenState extends State<ProductsOverViewScreen> {
               ),
             ],
           ),
-          Consumer<CartProvider>(builder: (_, cartProvider, _) => Container(
+          Consumer<CartProvider>(builder: (ctx, cartProvider, child) => Container(
             margin: const EdgeInsets.only(top: 10, right: 10),
             child: badges.Badge(
               badgeAnimation: const badges.BadgeAnimation.rotation(
@@ -62,7 +63,12 @@ class _ProductsOverViewScreenState extends State<ProductsOverViewScreen> {
                 colorChangeAnimationCurve: Curves.easeInCubic,
               ),
               onTap: () {
-          
+                if (cartProvider.itemCount > 0) {
+                  Navigator.of(context).pushNamed(CartsScreen.routeName);
+                } else {
+                  const snackBar = SnackBar(content: Text('Your cart is empty!'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
               },
               badgeContent: Text('${cartProvider.itemCount}'),
               child: const Icon(
