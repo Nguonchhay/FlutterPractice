@@ -5,11 +5,15 @@ import '../models/cart_item.dart';
 
 class CartProvider with ChangeNotifier {
 
-  Map<String, CartItem> _carts = [];
+  Map<String, CartItem> _carts = {};
 
 
   Map<String, CartItem> get carts {
-    return [..._carts];
+    return {..._carts};
+  }
+
+  int get itemCount {
+    return _carts.length;
   }
 
   void addItem(String productId, String productTitle, double productPrice) {
