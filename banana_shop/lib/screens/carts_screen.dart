@@ -1,3 +1,4 @@
+import 'package:banana_shop/states/providers/orders_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +15,7 @@ class CartsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context);
+    final orderProvider = Provider.of<OrdersProvider>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(
@@ -44,7 +46,8 @@ class CartsScreen extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-
+                      orderProvider.addItem(cartProvider.carts.values.toList(), cartProvider.totalAmount);
+                      cartProvider.clear();
                     },
                     child: Text(
                       'ORDER NOW',
