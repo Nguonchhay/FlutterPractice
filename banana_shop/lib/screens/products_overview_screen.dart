@@ -1,7 +1,8 @@
-import 'package:banana_shop/screens/carts_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 
+import 'package:banana_shop/screens/carts_screen.dart';
+import 'package:banana_shop/widgets/app_drawer.dart';
 import 'package:banana_shop/states/providers/carts_provider.dart';
 import 'package:banana_shop/widgets/products/product_list.dart';
 import 'package:provider/provider.dart';
@@ -80,6 +81,7 @@ class _ProductsOverViewScreenState extends State<ProductsOverViewScreen> {
         ],
       ),
       body: ProductList(_isShowAll),
+      drawer: AppDrawer(),
     );
   }
 }
