@@ -1,4 +1,4 @@
-import 'package:banana_shop/screens/orders_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,6 +8,8 @@ import 'package:banana_shop/states/providers/carts_provider.dart';
 import 'package:banana_shop/states/providers/products_provider.dart';
 import 'package:banana_shop/screens/product_detail_screen.dart';
 import 'package:banana_shop/screens/products_overview_screen.dart';
+import 'package:banana_shop/screens/orders_screen.dart';
+import 'package:banana_shop/screens/admin_products_screen.dart';
 
 
 void main() {
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         colorScheme: Theme.of(context).colorScheme.copyWith(
-          secondary: Colors.amberAccent
+          secondary: Colors.amberAccent,
         ), 
       ),
       routes: {
@@ -47,6 +49,7 @@ class MyApp extends StatelessWidget {
         ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
         CartsScreen.routeName: (ctx) => CartsScreen(),
         OrderScreens.routeName: (ctx) => OrderScreens(),
+        AdminProductsScreen.routeName: (ctx) => AdminProductsScreen(),
       },
     );
   }
