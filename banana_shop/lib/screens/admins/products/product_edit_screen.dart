@@ -22,6 +22,10 @@ class _ProductEditScreenState extends State<ProductEditScreen> {
   var editProduct;
 
   void _onSaveProduct() {
+    final isValid = _form.currentState?.validate();
+    if (!isValid!) {
+      return ;
+    }
     _form.currentState?.save();
   }
 
@@ -62,6 +66,12 @@ class _ProductEditScreenState extends State<ProductEditScreen> {
                         ),
                         textInputAction: TextInputAction.next,
                         initialValue: editProduct.title,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Please provide a title';
+                          }
+                          return null;
+                        },
                         onSaved: (newValue) {
                           editProduct = Product(
                             title: newValue!, 
@@ -78,6 +88,18 @@ class _ProductEditScreenState extends State<ProductEditScreen> {
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.number,
                         initialValue: editProduct.price.toString(),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Please enter a price';
+                          }
+                          if (double.tryParse(value) == null) {
+                            return 'Please enter a valid number';
+                          }
+                          if (double.parse(value) <= 0) {
+                            return 'Please enter a number bigger than 0';
+                          }
+                          return null;
+                        },
                         onSaved: (newValue) {
                           editProduct = Product(
                             title: editProduct.title, 
@@ -131,6 +153,18 @@ class _ProductEditScreenState extends State<ProductEditScreen> {
                               ),
                               textInputAction: TextInputAction.done,
                               keyboardType: TextInputType.url,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter an image URL';
+                                }
+                                if (!value.startsWith('http') || !value.startsWith('https')) {
+                                  return 'Please enter a valid URL';
+                                }
+                                if (!value.endsWith('.png') || !value.endsWith('.jpg') || !value.endsWith('.webp')) {
+                                  return 'Please enter a valid image URL';
+                                }
+                                return null;
+                              },
                               onSaved: (newValue) {
                                 editProduct = Product(
                                   title: editProduct.title, 
