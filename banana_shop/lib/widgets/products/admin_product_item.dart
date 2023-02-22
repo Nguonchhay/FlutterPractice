@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../screens/admins/products/product_edit_screen.dart';
-
+import 'package:banana_shop/states/providers/products_provider.dart';
 
 class AdminProductItem extends StatelessWidget {
 
@@ -18,6 +19,33 @@ class AdminProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final productProvider = Provider.of<ProductsProvider>(context, listen: false);
+
+    void deleteProduct(String id) {
+      showDialog(
+        context: context, 
+        builder: (ctx) => AlertDialog(
+          title: const Text('Remove Product'),
+          content: const Text('Are you sure?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              }, 
+              child: const Text('No'),
+            ),
+            TextButton(
+              onPressed: () {
+                productProvider.deleteProduct(id);
+                Navigator.of(context).pop(true);
+              }, 
+              child: const Text('Yes'),
+            ),
+          ],
+        ),
+      );
+    }
+
     return ListTile(
       title: Text(title),
       leading: CircleAvatar(
@@ -39,7 +67,7 @@ class AdminProductItem extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-      
+                deleteProduct(id);
               }, 
               icon: const Icon(Icons.delete),
               color: Colors.red,
