@@ -27,6 +27,12 @@ class _ProductEditScreenState extends State<ProductEditScreen> {
       return ;
     }
     _form.currentState?.save();
+    final isUpdated = Provider.of<ProductsProvider>(context, listen: false).updateProduct(editProduct);
+    final updateMessage = isUpdated ? 'Product is updated!' : 'Something went wrong!';
+    final snackBar = SnackBar(
+        content: Text(updateMessage)
+      );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   @override
@@ -74,6 +80,7 @@ class _ProductEditScreenState extends State<ProductEditScreen> {
                         },
                         onSaved: (newValue) {
                           editProduct = Product(
+                            id: editProduct.id,
                             title: newValue!, 
                             price: editProduct.price, 
                             imageUrl: editProduct.imageUrl,
@@ -102,6 +109,7 @@ class _ProductEditScreenState extends State<ProductEditScreen> {
                         },
                         onSaved: (newValue) {
                           editProduct = Product(
+                            id: editProduct.id,
                             title: editProduct.title, 
                             price: double.parse(newValue!), 
                             imageUrl: editProduct.imageUrl,
@@ -119,6 +127,7 @@ class _ProductEditScreenState extends State<ProductEditScreen> {
                         initialValue: editProduct.description,
                         onSaved: (newValue) {
                           editProduct = Product(
+                            id: editProduct.id,
                             title: editProduct.title, 
                             price: editProduct.price, 
                             imageUrl: editProduct.imageUrl,
@@ -160,13 +169,11 @@ class _ProductEditScreenState extends State<ProductEditScreen> {
                                 if (!value.startsWith('http') || !value.startsWith('https')) {
                                   return 'Please enter a valid URL';
                                 }
-                                if (!value.endsWith('.png') || !value.endsWith('.jpg') || !value.endsWith('.webp')) {
-                                  return 'Please enter a valid image URL';
-                                }
                                 return null;
                               },
                               onSaved: (newValue) {
                                 editProduct = Product(
+                                  id: editProduct.id,
                                   title: editProduct.title, 
                                   price: editProduct.price, 
                                   imageUrl: newValue!,
