@@ -1,7 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert';
 
 import 'package:banana_shop/states/models/product.dart';
+import 'package:banana_shop/services/product_service.dart';
 
 
 class ProductsProvider with ChangeNotifier {
@@ -49,8 +51,19 @@ class ProductsProvider with ChangeNotifier {
   }
 
   void addProduct(Product product) {
-    _products.add(product);
-    notifyListeners();
+    ProductService.addProduct(product)
+    .then((response) {
+      final body = json.decode(response.body);
+      final createdProduct = Product(
+        id: body['name'],
+        title: product.title, 
+        price: product.price, 
+        imageUrl: product.imageUrl,
+        isFavorite: product.isFavorite
+      );
+      _products.add(createdProduct);
+      notifyListeners();
+    });
   }
 
   bool updateProduct(Product product) {
