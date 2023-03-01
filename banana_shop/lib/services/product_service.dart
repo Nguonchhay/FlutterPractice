@@ -14,4 +14,14 @@ class ProductService {
       body: json.encode(product.toJson())
     );
   }
+
+  static Future<http.Response> deleteProduct(String id) {
+    const storeURL = BASE_URL;
+    return http.delete(
+      Uri(scheme: 'https', host: storeURL, path: '/products.json'),
+      body: json.encode({
+        "id": id
+      })
+    );
+  }
 }

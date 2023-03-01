@@ -25,6 +25,12 @@ class _ProductsOverViewScreenState extends State<ProductsOverViewScreen> {
 
   bool _isShowAll = true;
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   void updateFilterOption(FilterOptions value) {
     setState(() {
       _isShowAll = value == FilterOptions.All;

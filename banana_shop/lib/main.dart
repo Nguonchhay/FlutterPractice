@@ -1,8 +1,9 @@
-import 'package:banana_shop/screens/admins/products/product_edit_screen.dart';
-import 'package:banana_shop/screens/admins/products/product_new_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:banana_shop/screens/admins/products/product_edit_screen.dart';
+import 'package:banana_shop/screens/admins/products/product_new_screen.dart';
+import 'package:banana_shop/screens/auth/auth_screen.dart';
 import 'package:banana_shop/screens/carts_screen.dart';
 import 'package:banana_shop/states/providers/orders_provider.dart';
 import 'package:banana_shop/states/providers/carts_provider.dart';
@@ -10,7 +11,6 @@ import 'package:banana_shop/states/providers/products_provider.dart';
 import 'package:banana_shop/screens/product_detail_screen.dart';
 import 'package:banana_shop/screens/products_overview_screen.dart';
 import 'package:banana_shop/screens/orders_screen.dart';
-
 import 'package:banana_shop/screens/admins/products/products_screen.dart';
 
 void main() {
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         ), 
       ),
       routes: {
-        '/': (ctx) => ProductsOverViewScreen(),
+        '/': (ctx) => AuthScreen(),
         ProductsOverViewScreen.routeName: (ctx) => ProductsOverViewScreen(),
         ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
         CartsScreen.routeName: (ctx) => CartsScreen(),
@@ -53,6 +53,7 @@ class MyApp extends StatelessWidget {
         ProductsScreen.routeName: (ctx) => ProductsScreen(),
         ProductNewScreen.routeName: (ctx) => ProductNewScreen(),
         ProductEditScreen.routeName: (ctx) => ProductEditScreen(),
+        AuthScreen.routeName: (ctx) => AuthScreen(),
       },
     );
   }
