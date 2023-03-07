@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:banana_shop/states/providers/auth_provider.dart';
+
 
 enum AuthMode { Signup, Login }
 
@@ -19,7 +23,7 @@ class _AuthCardState extends State<AuthCard> {
   var _isLoading = false;
   final _passwordController = TextEditingController();
 
-  void _submit() {
+  Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) {
       // Invalid!
       return;
@@ -28,10 +32,13 @@ class _AuthCardState extends State<AuthCard> {
     setState(() {
       _isLoading = true;
     });
+
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+
     if (_authMode == AuthMode.Login) {
       // Log user in
     } else {
-      // Sign user up
+      await authProvider.signUp(_authData['email']!, _authData['password']!);
     }
     setState(() {
       _isLoading = false;
