@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:planning_app/providers/places_provider.dart';
+import 'package:planning_app/screens/admins/place_add_screen.dart';
+import 'package:planning_app/screens/place_detail_screen.dart';
+import 'package:planning_app/screens/places_screen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -9,36 +16,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Planning App',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-        colorScheme: ThemeData().colorScheme.copyWith(
-          secondary: Colors.amber,
+    return ChangeNotifierProvider.value(
+      value: PlacesProvider(),
+      child: MaterialApp(
+        title: 'Planning App',
+        theme: ThemeData(
+          primarySwatch: Colors.indigo,
+          colorScheme: ThemeData().colorScheme.copyWith(
+            secondary: Colors.amber,
+          ),
         ),
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage();
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Planning App'),
-      ),
-      body: const Center(
-        child: Text('Welcome to Planning App',),
+        home: PlacesScreen(),
+        routes: {
+          PlacesScreen.routeName: (ctx) => PlacesScreen(),
+          PlaceDetailScreen.routeName: (ctx) => PlaceDetailScreen(),
+          PlaceAddScreen.routeName: (ctx) => PlaceAddScreen()
+        },
       ),
     );
   }
