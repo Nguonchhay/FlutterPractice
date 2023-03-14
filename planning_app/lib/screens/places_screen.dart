@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:planning_app/screens/admins/place_add_screen.dart';
+
 
 class PlacesScreen extends StatelessWidget {
   static const routeName = "/places";
@@ -15,7 +17,7 @@ class PlacesScreen extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             onPressed: () {
-
+              Navigator.of(context).pushNamed(PlaceAddScreen.routeName);
             }, 
             icon: const Icon(Icons.add)
           ),
