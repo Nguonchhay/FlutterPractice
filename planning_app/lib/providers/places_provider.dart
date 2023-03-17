@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:planning_app/models/place.dart';
-import 'package:planning_app/services/dbservice.dart';
+import 'package:planning_app/services/db_service.dart';
 
 
 class PlacesProvider with ChangeNotifier {
