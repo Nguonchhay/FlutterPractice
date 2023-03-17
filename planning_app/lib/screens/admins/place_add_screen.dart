@@ -1,11 +1,12 @@
 import 'dart:io';
+import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
 import 'package:planning_app/models/place.dart';
 import 'package:planning_app/providers/places_provider.dart';
-
 import 'package:planning_app/widgets/input_image.dart';
-import 'package:provider/provider.dart';
+import 'package:planning_app/widgets/input_location.dart';
+
 
 
 class PlaceAddScreen extends StatefulWidget {
@@ -66,8 +67,10 @@ class _PlaceAddScreenState extends State<PlaceAddScreen> {
                     ),
 
                     const SizedBox(height: 10,),
-
                     InputImage(_setSelectImage),
+
+                    const SizedBox(height: 10,),
+                    InputLocation(),
                   ],
                 ),
               ),
