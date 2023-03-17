@@ -25,4 +25,12 @@ class Place {
     required this.location,
     required this.image
   });
+
+  Map<String, Object> get toObject {
+    return {
+      'id': id,
+      'title': title,
+      'image': image.path
+    };
+  }
 }
