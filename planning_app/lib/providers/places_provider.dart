@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:planning_app/models/place.dart';
@@ -21,5 +23,15 @@ class PlacesProvider with ChangeNotifier {
 
     DatabaseService.insert(PlacesProvider.TABLE_NAME, place.toObject);
   }
-  
+
+  Future<void> fetchAndSetPlaces() async {
+    final result = await DatabaseService.query(PlacesProvider.TABLE_NAME);
+    _places = result.map((item) => Place(
+      id: item['id'],
+      title: item['title'],
+      location: PlaceLocation(latitude: 0.0, longitude: 0.0),
+      image: File(item['image'])
+    )).toList();
+    notifyListeners();
+  }
 }
