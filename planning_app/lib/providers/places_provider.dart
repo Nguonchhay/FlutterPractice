@@ -34,4 +34,15 @@ class PlacesProvider with ChangeNotifier {
     )).toList();
     notifyListeners();
   }
+
+  Future<Place> findOneById(String id) async {
+    final result = await DatabaseService.findOneById(PlacesProvider.TABLE_NAME, id);
+    final mapResult = result.map((item) => Place(
+      id: item['id'],
+      title: item['title'],
+      location: PlaceLocation(latitude: item['loc_latitude'], longitude: item['loc_longitude'], address: item['loc_address']),
+      image: File(item['image'])
+    )).toList();
+    return mapResult.first;
+  }
 }

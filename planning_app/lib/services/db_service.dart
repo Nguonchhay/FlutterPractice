@@ -1,3 +1,4 @@
+import 'package:planning_app/models/place.dart';
 import 'package:sqflite/sqflite.dart' as sqlite;
 import 'package:path/path.dart' as path;
 import 'package:sqflite/sqlite_api.dart';
@@ -21,5 +22,10 @@ class DatabaseService {
   static Future<List<Map<String, dynamic>>> query(String tableName) async {
     final db = await DatabaseService.initDatabase();
     return db.query(tableName);
+  }
+
+  static Future<List<Map<String, dynamic>>> findOneById(String tableName, String id) async {
+    final db = await DatabaseService.initDatabase();
+    return db.rawQuery('SELECT * FROM $tableName WHERE id="$id";');
   }
 }
