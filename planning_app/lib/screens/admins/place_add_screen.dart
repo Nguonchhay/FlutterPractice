@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:planning_app/services/locatlion_service.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
@@ -21,11 +22,17 @@ class PlaceAddScreen extends StatefulWidget {
 class _PlaceAddScreenState extends State<PlaceAddScreen> {
 
   File? _pickedImage;
+  PlaceLocation? _pickedLocation;
 
   final _titleController = TextEditingController();
 
   void _setSelectImage(File pickedImage) {
     _pickedImage = pickedImage;
+  }
+
+  Future<void> _selectedPlace(double latitude, double longitude) async {
+    final pickedAddress = await LocationService.getPlaceAddress(latitude, longitude);
+    _pickedLocation = PlaceLocation(latitude: latitude, longitude: longitude, address: pickedAddress);
   }
 
   void _savePlace() {
@@ -36,7 +43,7 @@ class _PlaceAddScreenState extends State<PlaceAddScreen> {
     placeProvider.create(Place(
       id: DateTime.now().toIso8601String(),
       title: _titleController.text.toString(),
-      location: PlaceLocation(latitude: 0.0, longitude: 0.0),
+      location: _pickedLocation!,
       image: _pickedImage!
     ));
 
@@ -70,7 +77,7 @@ class _PlaceAddScreenState extends State<PlaceAddScreen> {
                     InputImage(_setSelectImage),
 
                     const SizedBox(height: 10,),
-                    InputLocation(),
+                    InputLocation(_selectedPlace),
                   ],
                 ),
               ),

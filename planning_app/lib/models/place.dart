@@ -30,7 +30,10 @@ class Place {
     return {
       'id': id,
       'title': title,
-      'image': image.path
+      'image': image.path,
+      'loc_latitude': location.latitude,
+      'loc_longitude': location.longitude,
+      'loc_address': location.address
     };
   }
 }

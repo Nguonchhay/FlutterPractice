@@ -29,7 +29,7 @@ class PlacesProvider with ChangeNotifier {
     _places = result.map((item) => Place(
       id: item['id'],
       title: item['title'],
-      location: PlaceLocation(latitude: 0.0, longitude: 0.0),
+      location: PlaceLocation(latitude: item['loc_latitude'], longitude: item['loc_longitude'], address: item['loc_address']),
       image: File(item['image'])
     )).toList();
     notifyListeners();

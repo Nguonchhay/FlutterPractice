@@ -29,7 +29,7 @@ class _InputImageState extends State<InputImage> {
 
     if (selectedFile != null) {
       setState(() {
-        _storedImage = File(selectedFile!.path);
+        _storedImage = File(selectedFile.path);
       });
 
       final appPath = await sysPath.getApplicationDocumentsDirectory();

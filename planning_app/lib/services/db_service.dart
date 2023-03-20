@@ -9,7 +9,7 @@ class DatabaseService {
   static Future<Database> initDatabase() async {
     final dbPath = await sqlite.getDatabasesPath();
     return sqlite.openDatabase(path.join(dbPath, DatabaseService.DB_NAME), onCreate: (db, version) {
-      return db.execute('CREATE TABLE IF NOT EXISTS places(id TEXT primary KEY, title TEXT, image TEXT)');
+      return db.execute('CREATE TABLE IF NOT EXISTS places(id TEXT primary KEY, title TEXT, image TEXT, loc_latitude REAL, loc_longitude REAL, loc_address TEXT)');
     }, version: 1);
   }
 

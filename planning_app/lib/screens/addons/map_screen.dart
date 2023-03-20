@@ -21,17 +21,39 @@ class GoogleMapScreen extends StatefulWidget {
 }
 
 class _GoogleMapScreenState extends State<GoogleMapScreen> {
+
+  LatLng? _pickedLocation;
+
+  void _onTab(LatLng position) {
+    setState(() {
+      _pickedLocation = position;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Google Map'),
+        actions: [
+          if (widget.isSelecting)
+            IconButton(
+              onPressed: _pickedLocation == null ? null : () {
+                Navigator.of(context).pop(_pickedLocation);
+              }, 
+              icon: const Icon(Icons.check)
+            )
+        ],
       ),
       body: GoogleMap(
         initialCameraPosition: CameraPosition(
           target: LatLng(widget.initLocation.latitude, widget.initLocation.longitude),
-          zoom: 16,
+          zoom: 1,
         ),
+        onTap: widget.isSelecting ? _onTab : null,
+        markers: _pickedLocation == null ? <Marker>{} : {
+          Marker(markerId: const MarkerId('planapp'), position: _pickedLocation!)
+        },
       ),
     );
   }
