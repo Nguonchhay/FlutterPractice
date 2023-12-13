@@ -68,6 +68,23 @@ class _TextInputScreenState extends State<TextInputScreen> {
                 border: OutlineInputBorder(),
               ),
             ),
+
+            Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(15.0),
+              child: Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      String data = usernameController.text;
+                      var snackBar = SnackBar(content: Text(data));
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }, 
+                    child: const Text('Login'),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
