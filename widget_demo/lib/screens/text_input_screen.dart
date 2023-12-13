@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TextInputScreen extends StatefulWidget {
+
+  static const routeName = '/text-input-screen';
+
   const TextInputScreen({super.key});
 
   @override
