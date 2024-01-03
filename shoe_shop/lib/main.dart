@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoe_shop/screens/home_screen.dart';
+import 'package:shoe_shop/screens/on_boarding_screen.dart';
 import 'package:shoe_shop/screens/splash_screen.dart';
 
 void main() {
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
       routes: {
         HomeScreen.routeName: (ctx) => const HomeScreen(),
+        OnBoardingScreen.routeName: (ctx) => const OnBoardingScreen(),
       },
     );
   }

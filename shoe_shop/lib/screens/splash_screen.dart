@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoe_shop/screens/home_screen.dart';
+import 'package:shoe_shop/screens/on_boarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
 
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(
       const Duration(seconds: 3),
       () {
-        Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+        Navigator.pushReplacementNamed(context, OnBoardingScreen.routeName);
       }
     );
   }
