@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoe_shop/screens/auth/login_screen.dart';
 import 'package:shoe_shop/screens/home_screen.dart';
 import 'package:shoe_shop/screens/on_boarding_screen.dart';
 import 'package:shoe_shop/screens/splash_screen.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Shoe Shop',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -23,6 +25,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomeScreen.routeName: (ctx) => const HomeScreen(),
         OnBoardingScreen.routeName: (ctx) => const OnBoardingScreen(),
+        LoginScreen.routeName: (ctx) => const LoginScreen(),
       },
     );
   }
