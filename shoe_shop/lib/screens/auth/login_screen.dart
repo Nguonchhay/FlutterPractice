@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoe_shop/screens/auth/sign_up_screen.dart';
 import 'package:shoe_shop/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -91,6 +92,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     _onLogin();
                   },
                   child: const Text('Log In')
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 15.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(SignUpScreen.routeName);
+                  },
+                  child: const Text('Sign up first')
                 ),
               ),
             ],
