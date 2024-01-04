@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shoe_shop/screens/auth/sign_up_screen.dart';
 import 'package:shoe_shop/screens/home_screen.dart';
 
@@ -14,13 +17,13 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
 
-  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   void _onLogin() {
-    String username = usernameController.text.toString().trim();
+    String email = emailController.text.toString().trim();
     String password = passwordController.text.toString().trim();
-    var snackBar = SnackBar(content: Text("Login with $username"));
+    var snackBar = SnackBar(content: Text("Login with $email"));
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
     // Navigate to Home
@@ -44,13 +47,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Username',
+                      'Email',
                       style: TextStyle(
                         fontSize: 20.0,
                       ),
                     ),
                     TextField(
-                      controller: usernameController,
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         
@@ -86,21 +90,71 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Container(
+                width: double.infinity,
                 padding: const EdgeInsets.symmetric(vertical: 15.0),
                 child: ElevatedButton(
-                  onPressed: () {
-                    _onLogin();
-                  },
-                  child: const Text('Log In')
-                ),
+                      onPressed: () {
+                        _onLogin();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        backgroundColor: Colors.lightGreen,
+                        foregroundColor: Colors.white,
+                      ),
+                      child: const Text('Log In')
+                  ),
               ),
               Container(
+                width: double.infinity,
                 padding: const EdgeInsets.symmetric(vertical: 15.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(SignUpScreen.routeName);
-                  },
-                  child: const Text('Sign up first')
+                child: Column(
+                  children: [
+                    const Text('---------------- OR ---------------- '),
+                    const SizedBox(height: 30.0,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.lightBlue,
+                          foregroundColor: Colors.white,
+                          child: IconButton(
+                            onPressed: () {
+                              log("Facebook login");
+                            }, 
+                            icon: const FaIcon(FontAwesomeIcons.facebookF),
+                          ),
+                        ),
+                        const SizedBox(width: 15.0,),
+                        CircleAvatar(
+                          backgroundColor: Colors.redAccent,
+                          foregroundColor: Colors.white,
+                          child: IconButton(
+                            onPressed: () {
+                              log("Google login");
+                            }, 
+                            icon: const FaIcon(FontAwesomeIcons.google),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Create a free account now?'),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(SignUpScreen.routeName);
+                      },
+                      child: const Text('Sign up')
+                    ),
+                  ],
                 ),
               ),
             ],
