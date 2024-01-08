@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widget_demo/screens/image_screen.dart';
+import 'package:widget_demo/screens/list/lists_screen.dart';
 import 'package:widget_demo/screens/message_screen.dart';
 import 'package:widget_demo/screens/text_input_screen.dart';
 
@@ -26,6 +27,9 @@ class HomeScreen extends StatelessWidget {
           break;
         case MessageScreen.routeName:
           Navigator.pushNamed(context, MessageScreen.routeName);
+          break;
+        case ListScreen.routeName:
+          Navigator.pushNamed(context, ListScreen.routeName);
           break;
       }
     }
@@ -59,6 +63,13 @@ class HomeScreen extends StatelessWidget {
                 child: const Text('Message Popup'),
                 onPressed: () {
                   goToScreen(MessageScreen.routeName);
+                }, 
+              ),
+              const SizedBox(height: 15.0,),
+              TextButton(
+                child: const Text('Lists'),
+                onPressed: () {
+                  goToScreen(ListScreen.routeName);
                 }, 
               ),
             ],
