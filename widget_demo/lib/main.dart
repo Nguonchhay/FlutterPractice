@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:widget_demo/screens/home_screen.dart';
 import 'package:widget_demo/screens/image_screen.dart';
+import 'package:widget_demo/screens/list/custom_list_screen.dart';
 import 'package:widget_demo/screens/list/horizonal_list_screen.dart';
 import 'package:widget_demo/screens/list/lists_screen.dart';
 import 'package:widget_demo/screens/message_screen.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         MessageScreen.routeName: (ctx) => const MessageScreen(),
         ListScreen.routeName: (ctx) => const ListScreen(),
         HorizontalListScreen.routeName: (ctx) => const HorizontalListScreen(),
+        CustomListViewScreen.routeName: (ctx) => const CustomListViewScreen(),
       },
     );
   }

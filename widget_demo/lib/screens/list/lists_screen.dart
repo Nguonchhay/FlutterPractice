@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_demo/screens/list/custom_list_screen.dart';
 import 'package:widget_demo/screens/list/horizonal_list_screen.dart';
 
 class ListScreen extends StatefulWidget {
@@ -26,7 +27,14 @@ class _ListScreenState extends State<ListScreen> {
             onTap: () {
               Navigator.of(context).pushNamed(HorizontalListScreen.routeName);
             },
-          )
+          ),
+          ListTile(
+            leading: const Icon(Icons.cut_sharp),
+            title: const Text('Custom Listview'),
+            onTap: () {
+              Navigator.of(context).pushNamed(CustomListViewScreen.routeName);
+            },
+          ),
         ],
       ),
     );

@@ -15,7 +15,7 @@ class _HorizontalListScreenState extends State<HorizontalListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('List Widgets'),
+        title: const Text('Horizontal ListView'),
       ),
       body: Container(
         height: 150.0,
