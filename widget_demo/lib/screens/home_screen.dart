@@ -51,21 +51,21 @@ class HomeScreen extends StatelessWidget {
                   goToScreen(TextInputScreen.routeName);
                 }, 
               ),
-              const SizedBox(height: 15.0,),
+              const SizedBox(height: 10.0,),
               TextButton(
                 child: const Text('Image Widget'),
                 onPressed: () {
                   goToScreen(ImageScreen.routeName);
                 }, 
               ),
-              const SizedBox(height: 15.0,),
+              const SizedBox(height: 10.0,),
               TextButton(
                 child: const Text('Message Popup'),
                 onPressed: () {
                   goToScreen(MessageScreen.routeName);
                 }, 
               ),
-              const SizedBox(height: 15.0,),
+              const SizedBox(height: 10.0,),
               TextButton(
                 child: const Text('Lists'),
                 onPressed: () {

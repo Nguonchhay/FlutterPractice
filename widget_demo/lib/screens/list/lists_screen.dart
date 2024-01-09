@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widget_demo/screens/list/custom_list_screen.dart';
+import 'package:widget_demo/screens/list/grideview_count_screen.dart';
+import 'package:widget_demo/screens/list/grideview_extent_screen.dart';
 import 'package:widget_demo/screens/list/horizonal_list_screen.dart';
 
 class ListScreen extends StatefulWidget {
@@ -33,6 +35,20 @@ class _ListScreenState extends State<ListScreen> {
             title: const Text('Custom Listview'),
             onTap: () {
               Navigator.of(context).pushNamed(CustomListViewScreen.routeName);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.cut_sharp),
+            title: const Text('Gridview - Count'),
+            onTap: () {
+              Navigator.of(context).pushNamed(GridViewCountScreen.routeName);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.cut_sharp),
+            title: const Text('Gridview - Extent'),
+            onTap: () {
+              Navigator.of(context).pushNamed(GridViewExtentScreen.routeName);
             },
           ),
         ],
