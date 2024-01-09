@@ -24,7 +24,7 @@ class _GridViewCountScreenState extends State<GridViewCountScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Grid View - Extent'),
+        title: const Text('Grid View - Count'),
       ),
       body: GridView.count(
         padding: const EdgeInsets.all(15.0),

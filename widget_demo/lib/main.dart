@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:widget_demo/screens/home_screen.dart';
 import 'package:widget_demo/screens/image_screen.dart';
 import 'package:widget_demo/screens/list/custom_list_screen.dart';
-import 'package:widget_demo/screens/list/grideview_count_screen.dart';
-import 'package:widget_demo/screens/list/grideview_extent_screen.dart';
+import 'package:widget_demo/screens/list/gridview_count_screen.dart';
+import 'package:widget_demo/screens/list/gridview_custom_screen.dart';
+import 'package:widget_demo/screens/list/gridview_extent_screen.dart';
 import 'package:widget_demo/screens/list/horizonal_list_screen.dart';
 import 'package:widget_demo/screens/list/lists_screen.dart';
 import 'package:widget_demo/screens/message_screen.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         CustomListViewScreen.routeName: (ctx) => const CustomListViewScreen(),
         GridViewCountScreen.routeName: (ctx) => const GridViewCountScreen(),
         GridViewExtentScreen.routeName: (ctx) => const GridViewExtentScreen(),
+        GridViewCustomScreen.routeName: (ctx) => const GridViewCustomScreen(),
       },
     );
   }
