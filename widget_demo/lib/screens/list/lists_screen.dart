@@ -4,6 +4,7 @@ import 'package:widget_demo/screens/list/gridview_count_screen.dart';
 import 'package:widget_demo/screens/list/gridview_extent_screen.dart';
 import 'package:widget_demo/screens/list/gridview_custom_screen.dart';
 import 'package:widget_demo/screens/list/horizonal_list_screen.dart';
+import 'package:widget_demo/screens/list/listview_gridview_screen.dart';
 
 class ListScreen extends StatefulWidget {
 
@@ -57,6 +58,13 @@ class _ListScreenState extends State<ListScreen> {
             title: const Text('Gridview - Custom'),
             onTap: () {
               Navigator.of(context).pushNamed(GridViewCustomScreen.routeName);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.cut_sharp),
+            title: const Text('LstView and Gridview'),
+            onTap: () {
+              Navigator.of(context).pushNamed(ListViewAndGridViewScreen.routeName);
             },
           ),
         ],

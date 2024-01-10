@@ -8,6 +8,7 @@ import 'package:widget_demo/screens/list/gridview_custom_screen.dart';
 import 'package:widget_demo/screens/list/gridview_extent_screen.dart';
 import 'package:widget_demo/screens/list/horizonal_list_screen.dart';
 import 'package:widget_demo/screens/list/lists_screen.dart';
+import 'package:widget_demo/screens/list/listview_gridview_screen.dart';
 import 'package:widget_demo/screens/message_screen.dart';
 import 'package:widget_demo/screens/text_input_screen.dart';
 
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         GridViewCountScreen.routeName: (ctx) => const GridViewCountScreen(),
         GridViewExtentScreen.routeName: (ctx) => const GridViewExtentScreen(),
         GridViewCustomScreen.routeName: (ctx) => const GridViewCustomScreen(),
+        ListViewAndGridViewScreen.routeName: (ctx) => const ListViewAndGridViewScreen(),
       },
     );
   }
