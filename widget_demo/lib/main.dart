@@ -24,7 +24,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Core Widget Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+        primarySwatch: Colors.orange,
+        appBarTheme: const AppBarTheme(
+          color: Colors.white,
+        ),
         useMaterial3: true,
       ),
       home: const HomeScreen(),

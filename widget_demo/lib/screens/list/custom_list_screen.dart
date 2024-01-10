@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_search_bar/easy_search_bar.dart';
 import 'package:widget_demo/models/product.dart';
 
 class CustomListViewScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _CustomListViewScreenState extends State<CustomListViewScreen> {
 
   List<Product> products = [
     Product(
-      title: 'Product 001', 
+      title: 'Milk', 
       quantity: 10, 
       unitPrice: 1.0,
       id: '001',
@@ -23,7 +24,7 @@ class _CustomListViewScreenState extends State<CustomListViewScreen> {
       description: 'You can specify how many words should be generated right next to the word "lorem". For example, lorem5 will generate a 5-words dummy text.'
     ),
     Product(
-      title: 'Product 002', 
+      title: 'Water', 
       quantity: 5, 
       unitPrice: 2.0,
       id: '002',
@@ -31,7 +32,7 @@ class _CustomListViewScreenState extends State<CustomListViewScreen> {
       description: 'You can specify how many words should be generated right next to the word "lorem". For example, lorem5 will generate a 5-words dummy text.'
     ),
     Product(
-      title: 'Product 003', 
+      title: 'Computer', 
       quantity: 2, 
       unitPrice: 1.5,
       id: '003',
@@ -39,6 +40,8 @@ class _CustomListViewScreenState extends State<CustomListViewScreen> {
       description: 'You can specify how many words should be generated right next to the word "lorem". For example, lorem5 will generate a 5-words dummy text.'
     ),
   ];
+
+  List<Product>  _searchResult = [];
 
   Widget _renderProductImage(String image) {
     return image == '' ? Image.asset(
@@ -52,6 +55,20 @@ class _CustomListViewScreenState extends State<CustomListViewScreen> {
       height: 250.0,
       width: MediaQuery.of(context).size.width,
     );
+  }
+
+  void _filteredProducts(String text) {
+    if (text.length > 2) {
+      setState(() {
+        _searchResult = products.where((product) {
+          return product.title.toLowerCase().contains(text.toLowerCase());
+        }).toList();
+      });
+    } else {
+      setState(() {
+        _searchResult = products;
+      });
+    }
   }
 
   Widget _buildListItem(Product product) {
@@ -106,14 +123,21 @@ class _CustomListViewScreenState extends State<CustomListViewScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _searchResult = products;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Custom ListView'),
+      appBar: EasySearchBar(
+          title: const Text('Customer List View'),
+          onSearch: (value) => setState(() => _filteredProducts(value)),
       ),
       body: ListView.builder(
-        itemCount: products.length,
-        itemBuilder: (ctx, index) => _buildListItem(products[index]),
+        itemCount: _searchResult.length,
+        itemBuilder: (ctx, index) => _buildListItem(_searchResult[index]),
       ),
     );
   }
