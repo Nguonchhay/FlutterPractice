@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_demo/screens/bottom_nav/bottom_nav_bar_screen.dart';
 import 'package:widget_demo/screens/image_screen.dart';
 import 'package:widget_demo/screens/list/lists_screen.dart';
 import 'package:widget_demo/screens/message_screen.dart';
@@ -34,6 +35,9 @@ class HomeScreen extends StatelessWidget {
           break;
         case CustomSearchBarScreen.routeName:
           Navigator.pushNamed(context, CustomSearchBarScreen.routeName);
+          break;
+        case BottomNavigationBarScreen.routeName:
+          Navigator.pushReplacementNamed(context, BottomNavigationBarScreen.routeName);
           break;
       }
     }
@@ -81,6 +85,13 @@ class HomeScreen extends StatelessWidget {
                 child: const Text('Search in AppBar'),
                 onPressed: () {
                   goToScreen(CustomSearchBarScreen.routeName);
+                }, 
+              ),
+              const SizedBox(height: 10.0,),
+              TextButton(
+                child: const Text('Bottom Navigation'),
+                onPressed: () {
+                  goToScreen(BottomNavigationBarScreen.routeName);
                 }, 
               ),
             ],

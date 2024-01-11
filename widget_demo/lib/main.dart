@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_demo/screens/bottom_nav/bottom_nav_bar_screen.dart';
 
 import 'package:widget_demo/screens/home_screen.dart';
 import 'package:widget_demo/screens/image_screen.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
 
         CustomSearchBarScreen.routeName: (ctx) => const CustomSearchBarScreen(),
         SliverAppBarScreen.routeName: (ctx) => const SliverAppBarScreen(),
+        BottomNavigationBarScreen.routeName: (ctx) => const BottomNavigationBarScreen(),
       },
     );
   }
