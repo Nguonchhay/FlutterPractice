@@ -11,6 +11,7 @@ import 'package:widget_demo/screens/list/lists_screen.dart';
 import 'package:widget_demo/screens/list/listview_gridview_screen.dart';
 import 'package:widget_demo/screens/message_screen.dart';
 import 'package:widget_demo/screens/search_bar/custom_search_bar_screen.dart';
+import 'package:widget_demo/screens/search_bar/sliver_app_bar_screen.dart';
 import 'package:widget_demo/screens/text_input_screen.dart';
 
 void main() {
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         ListViewAndGridViewScreen.routeName: (ctx) => const ListViewAndGridViewScreen(),
 
         CustomSearchBarScreen.routeName: (ctx) => const CustomSearchBarScreen(),
+        SliverAppBarScreen.routeName: (ctx) => const SliverAppBarScreen(),
       },
     );
   }

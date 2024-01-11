@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_demo/screens/search_bar/sliver_app_bar_screen.dart';
 
 class CustomSearchBarScreen extends StatefulWidget {
 
@@ -10,9 +11,15 @@ class CustomSearchBarScreen extends StatefulWidget {
   State<CustomSearchBarScreen> createState() => _CustomSearchBarScreenState();
 }
 
+enum MenuSearchBar {
+  SliverAppBar,
+  SearchBarWithLib,
+  SearchBarWithIcon
+}
+
 class _CustomSearchBarScreenState extends State<CustomSearchBarScreen> {
 
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   final _data = [
     'Apple',
     'Banana',
@@ -33,6 +40,7 @@ class _CustomSearchBarScreenState extends State<CustomSearchBarScreen> {
   List<String> _filteredData = [];
   bool _isLoading = false;
 
+  MenuSearchBar? _selectedMenuItem;
 
   @override
   void initState() {
@@ -65,6 +73,16 @@ class _CustomSearchBarScreenState extends State<CustomSearchBarScreen> {
     
   }
 
+  void _goToScreen() {
+    if (_selectedMenuItem == MenuSearchBar.SliverAppBar) {
+      // Navigator.of(context).pushNamed(SliverAppBarScreen.routeName);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const SliverAppBarScreen())
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,6 +106,31 @@ class _CustomSearchBarScreenState extends State<CustomSearchBarScreen> {
             border: InputBorder.none,
           ),
         ),
+        actions: [
+          PopupMenuButton<MenuSearchBar>(
+            initialValue: _selectedMenuItem,
+            onSelected: (MenuSearchBar item) {
+              setState(() {
+                _selectedMenuItem = item;
+              });
+              _goToScreen();
+            },
+            itemBuilder: (ctx) => <PopupMenuEntry<MenuSearchBar>>[
+              const PopupMenuItem<MenuSearchBar>(
+                value: MenuSearchBar.SliverAppBar,
+                child: Text("SliverAppBar"),
+              ),
+              const PopupMenuItem<MenuSearchBar>(
+                value: MenuSearchBar.SearchBarWithLib,
+                child: Text("SearchBarWithLib"),
+              ),
+              const PopupMenuItem<MenuSearchBar>(
+                value: MenuSearchBar.SearchBarWithIcon,
+                child: Text("SearchBarWithIcon"),
+              ),
+            ],
+          ),
+        ],
       ),
       body: _isLoading ? const Center(
         child: CircularProgressIndicator(color: Colors.white),
