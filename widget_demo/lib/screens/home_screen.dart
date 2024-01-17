@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:widget_demo/models/user.dart';
+import 'package:widget_demo/providers/auth_provider.dart';
 import 'package:widget_demo/screens/bottom_nav/bottom_nav_bar_screen.dart';
 import 'package:widget_demo/screens/image_screen.dart';
 import 'package:widget_demo/screens/list/lists_screen.dart';
 import 'package:widget_demo/screens/message_screen.dart';
 import 'package:widget_demo/screens/search_bar/custom_search_bar_screen.dart';
 import 'package:widget_demo/screens/text_input_screen.dart';
+import 'package:widget_demo/screens/user_detail_screen.dart';
+import 'package:widget_demo/screens/user_screen.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -15,6 +20,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
 
     void goToScreen(screenName) {
       switch(screenName) {
@@ -39,6 +46,12 @@ class HomeScreen extends StatelessWidget {
         case BottomNavigationBarScreen.routeName:
           Navigator.pushReplacementNamed(context, BottomNavigationBarScreen.routeName);
           break;
+        case UsersScreen.routeName:
+          Navigator.pushNamed(context, UsersScreen.routeName);
+          break;
+        case UserDetailScreen.routeName:
+          Navigator.pushNamed(context, UserDetailScreen.routeName);
+          break;
       }
     }
 
@@ -46,6 +59,19 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home'),
         backgroundColor: Colors.cyan,
+        actions: [
+          IconButton(
+            onPressed: () {
+              authProvider.user = User(
+                email: 'admin@gmail.com',
+                id: '001',
+                name: 'Admin User'
+              );
+              goToScreen(UserDetailScreen.routeName);
+            }, 
+            icon: const Icon(Icons.login),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -92,6 +118,13 @@ class HomeScreen extends StatelessWidget {
                 child: const Text('Bottom Navigation'),
                 onPressed: () {
                   goToScreen(BottomNavigationBarScreen.routeName);
+                }, 
+              ),
+              const SizedBox(height: 10.0,),
+              TextButton(
+                child: const Text('Provider State - Consumer'),
+                onPressed: () {
+                  goToScreen(UsersScreen.routeName);
                 }, 
               ),
             ],
